@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+enum TransactionEnum: String {
+    case piyasa = "Piyasa"
+    case limit = "Limit"
+    case stopLimit = "Stop-Limit"
+    case stopPiyasa = "Stop-Piyasa"
+}

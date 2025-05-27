@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct AlarmButtonView: View {
+    @EnvironmentObject var viewModel: AlarmViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            viewModel.addAlarm()
+        } label: {
+            Text("Alarm Oluştur")
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 12)
+        .foregroundColor(viewModel.sliderValue == 0 ? Color.gray7 : .white)
+        .background(viewModel.sliderValue == 0 ? Color.gray4 : Color.orange1)
+        .cornerRadius(6)
     }
 }
 

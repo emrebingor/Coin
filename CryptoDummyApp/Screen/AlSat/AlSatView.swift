@@ -23,7 +23,15 @@ struct AlSatView: View {
             .frame(maxWidth: .infinity)
             .background(Color.gray4)
 
-            AlSat()
+            VStack {
+               AmountView()
+                    .environmentObject(viewModel)
+
+                Spacer()
+                
+                AlSatButtonView()
+                    .environmentObject(viewModel)
+            }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.top, 16)
         }
@@ -37,52 +45,6 @@ struct AlSatView: View {
             Text(title)
                 .foregroundColor(viewModel.selectedTab == tab ? Color.green1 : Color.gray7)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-        }
-    }
-}
-
-struct AlSat: View {
-    var body: some View {
-        VStack {
-            VStack {
-                HStack {
-                    Image("btcIcon")
-                    Text("Bitcoin - BTC/TRY")
-                    Spacer()
-                }
-                
-                Divider()
-                    .frame(height: 1)
-                    .frame(maxWidth: .infinity)
-                    .background(Color.gray)
-                    .padding(.bottom, 10)
-                
-                HStack(alignment: .bottom, spacing: 4) {
-                    Text("2,370.42")
-                        .font(.system(size: 36, weight: .semibold))
-                            .foregroundColor(Color.gray8)
-                    Text("TL")
-                        .font(.system(size: 16, weight: .medium))
-                            .foregroundColor(Color.gray8)
-                }
-            }
-            .padding(.all, 16)
-            .frame(maxWidth: .infinity)
-            .background(Color.gray1)
-            .cornerRadius(16)
-
-            Spacer()
-            
-            Button {
-                
-            } label: {
-                Text("BTC AL")
-            }
-            .padding(.vertical, 12)
-            .frame(maxWidth: .infinity)
-            .foregroundColor(.white)
-            .background(.green1)
-            .cornerRadius(6)
         }
     }
 }

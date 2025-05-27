@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct AlSatButtonView: View {
+    @EnvironmentObject var viewModel: AlSatViewModel
     var body: some View {
         Button {
             
         } label: {
-            Text("BTC AL")
+            Text(viewModel.selectedTab == .kolayAl ? "BTC AL" : "BTC SAT")
         }
         .padding(.vertical, 12)
         .frame(maxWidth: .infinity)

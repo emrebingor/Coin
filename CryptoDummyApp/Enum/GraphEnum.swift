@@ -1,8 +1,16 @@
-//
-//  GraphEnum.swift
-//  CryptoDummyApp
-//
-//  Created by Emre Bingor on 5/16/25.
-//
-
-import Foundation
+enum GraphEnum {
+    case increase
+    case decrease
+    case all
+    
+    var imageName: String {
+        switch self {
+        case .increase:
+            return "increaseChart"
+        case .decrease:
+            return "decreaseChart"
+        case .all:
+            return "chartMix"
+        }
+    }
+}

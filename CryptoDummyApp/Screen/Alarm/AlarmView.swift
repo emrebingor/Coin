@@ -10,7 +10,7 @@ import SwiftUI
 struct AlarmView: View {
     
     @StateObject var viewModel = AlarmViewModel()
-
+    
     let range: ClosedRange<Double> = -99...99
     var body: some View {
         VStack(spacing: 0) {
@@ -49,19 +49,19 @@ struct AlarmView: View {
             .background(Color.gray1)
             
             Spacer().frame(height: 16)
-
+            
             VStack {
                 GeometryReader { geometry in
                     let totalWidth = geometry.size.width
                     let progress = CGFloat((viewModel.sliderValue - range.lowerBound) / (range.upperBound - range.lowerBound))
                     let labelOffset = progress * totalWidth
-
+                    
                     if viewModel.sliderValue != 0 {
                         PriceLabelBubble(value: viewModel.sliderValue)
                             .offset(x: viewModel.sliderValue > 0 ? labelOffset - 28 : labelOffset - 18, y: -5)
                     }
                 }
-
+                
                 ZStack {
                     let tickCount = 9
                     let tickValues = stride(
@@ -69,11 +69,11 @@ struct AlarmView: View {
                         through: range.upperBound,
                         by: (range.upperBound - range.lowerBound) / Double(tickCount - 1)
                     ).map { $0 }
-
+                    
                     HStack(spacing: 0) {
                         ForEach(0..<tickCount, id: \.self) { i in
                             let tickValue = tickValues[i]
-
+                            
                             let color: Color = {
                                 if viewModel.sliderValue < 0 {
                                     return tickValue >= viewModel.sliderValue && tickValue <= 0 ? .red : .gray
@@ -83,39 +83,37 @@ struct AlarmView: View {
                                     return .gray
                                 }
                             }()
-
+                            
                             Rectangle()
                                 .fill(color)
                                 .frame(width: 2, height: 16)
-
+                            
                             if i != tickCount - 1 {
                                 Spacer()
                             }
                         }
                     }
-
-                    CustomThumbSlider(value: $viewModel.sliderValue, range: range)
-                        .onChange(of: viewModel.sliderValue) { newValue in
-                            viewModel.changedPrice(newValue: newValue)
-                        }
+                    
+                    CustomThumbSlider(range: range)
+                        .environmentObject(viewModel)
                 }
             }
             .frame(height: 54)
-
+            
             Spacer().frame(height: 16)
             
             AlarmButtonView()
                 .environmentObject(viewModel)
             
             Spacer().frame(height: 16)
-
+            
             if viewModel.alarmList.isEmpty {
                 EmptyAlarmView()
             } else {
                 AlarmListView()
                     .environmentObject(viewModel)
             }
-        
+            
             Spacer()
         }
         .padding(.horizontal, 16)

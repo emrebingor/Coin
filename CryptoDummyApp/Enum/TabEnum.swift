@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum Tab {
+    case kolayAl
+    case kolaySat
+}

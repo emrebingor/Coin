@@ -7,11 +7,7 @@
 
 import Foundation
 
-enum Tab {
-    case kolayAl
-    case kolaySat
-}
-
 class AlSatViewModel: ObservableObject {
     @Published var selectedTab: Tab = .kolayAl
+    @Published var price: String = ""
 }
