@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PercentageEnum: Int {
+enum PercentageEnum: Int, CaseIterable {
     case percent25 = 25
     case percent50 = 50
     case percent75 = 75

@@ -48,7 +48,7 @@ struct ChartView: View {
             } label: {
                 Image(viewModel.grapEnum.imageName)
                     .padding(3)
-                    .background(Color.gray)
+                    .background(Color.gray3)
                     .cornerRadius(4)
             }
             .padding(.top, 8)
