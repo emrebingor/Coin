@@ -15,12 +15,12 @@ class AlSatViewModel: ObservableObject {
         ["1", "2", "3"],
         ["4", "5", "6"],
         ["7", "8", "9"],
-        [".", "0", "⌫"]
+        [".", "0", "delete"]
     ]
     
     func buttonTap(_ value: String) {
         switch value {
-        case "⌫":
+        case "delete":
             if !input.isEmpty {
                 input.removeLast()
             }
