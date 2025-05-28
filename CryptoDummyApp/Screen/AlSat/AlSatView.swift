@@ -29,6 +29,31 @@ struct AlSatView: View {
 
                 Spacer()
                 
+                VStack {
+                    ForEach(viewModel.buttons, id: \.self) { row in
+                        HStack(spacing: 45) {
+                            ForEach(row, id: \.self) { button in
+                                Text(button)
+                                    .font(.system(size: 28, weight: .medium))
+                                    .frame(width: 60, height: 60)
+                                    .foregroundColor(Color.gray8)
+                                    .cornerRadius(12)
+                                    .onTapGesture {
+                                        viewModel.buttonTap(button)
+                                    }
+                            }
+                        }
+                        
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.horizontal, 36)
+                .padding(.vertical, 8)
+                .background(Color.gray1)
+                .cornerRadius(16)
+
+                Spacer().frame(height: 16)
+                
                 AlSatButtonView()
                     .environmentObject(viewModel)
             }

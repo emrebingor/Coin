@@ -130,7 +130,7 @@ struct TransactionView: View {
             .padding(.bottom, 8)
             
             if viewModel.selectedTransaction == TransactionEnum.stopLimit.rawValue {
-                TextFieldView(title: "Miktar (BTC)", text: $viewModel.miktarAmountFieldText)
+                TextFieldView(title: "Toplam (TRY)", text: $viewModel.amountFieldText)
                     .padding(.bottom, 8)
             }
 

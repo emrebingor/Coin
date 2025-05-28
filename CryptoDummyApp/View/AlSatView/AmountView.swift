@@ -25,7 +25,7 @@ struct AmountView: View {
                 .padding(.bottom, 10)
             
             HStack(alignment: .bottom, spacing: 4) {
-                Text(viewModel.price)
+                Text(viewModel.formattedInput)
                     .font(.system(size: 36, weight: .semibold))
                         .foregroundColor(Color.gray8)
                 Text("TL")
