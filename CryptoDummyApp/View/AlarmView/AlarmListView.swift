@@ -25,27 +25,29 @@ struct AlarmListView: View {
             
             List {
                 ForEach(Array(viewModel.alarmList.enumerated()), id: \.element) { index, price in
-                    HStack(spacing: 0) {
-                        Image(price < viewModel.fiyatText ? "decreaseArrow" : "increaseArrow")
-                        
-                        Spacer().frame(width: 6)
+                    VStack {
+                        HStack(spacing: 0) {
+                            Image(price < viewModel.fiyatText ? "decreaseArrow" : "increaseArrow")
+                            
+                            Spacer().frame(width: 6)
 
-                        Text(String(price))
-                        
-                        Spacer()
-                        
-                        Image("iconDelete")
-                            .onTapGesture {
-                                viewModel.deleteAlarm(index: index)
-                            }
-                        
+                            Text(String(price))
+                            
+                            Spacer()
+                            
+                            Image("iconDelete")
+                                .onTapGesture {
+                                    viewModel.deleteAlarm(index: index)
+                                }
+                        }
                         Divider()
                             .frame(height: 1)
                             .frame(maxWidth: .infinity)
                             .background(Color.gray1)
                             .padding(.bottom, 10)
                     }
-    
+                    .frame(height: 45)
+
                 }
                 .listRowInsets(EdgeInsets())
                 .background(Color.gray1)

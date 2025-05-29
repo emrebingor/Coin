@@ -25,6 +25,7 @@ struct AlarmView: View {
                     .font(.system(size: 14, weight: .medium))
                 Spacer()
                 
+   
                 if viewModel.changedPriceText != 0 {
                     Image(viewModel.changedPriceText > viewModel.fiyatText ? "increaseArrow" : "decreaseArrow")
                 }
@@ -58,7 +59,8 @@ struct AlarmView: View {
                     
                     if viewModel.sliderValue != 0 {
                         PriceLabelBubble(value: viewModel.sliderValue)
-                            .offset(x: viewModel.sliderValue > 0 ? labelOffset - 28 : labelOffset - 18, y: -5)
+                            .offset(x: viewModel.sliderValue > 0 ? viewModel.sliderValue > 88 ?
+                                    labelOffset - 36 : labelOffset - 23 : viewModel.sliderValue < -88 ? labelOffset - 2 : labelOffset - 12, y: -5)
                     }
                 }
                 
@@ -116,7 +118,6 @@ struct AlarmView: View {
             
             Spacer()
         }
-        .padding(.horizontal, 16)
     }
 }
 

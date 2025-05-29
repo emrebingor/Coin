@@ -8,7 +8,7 @@ struct PriceLabelBubble: View {
             .font(.system(size: 12, weight: .bold))
             .foregroundColor(.white)
             .padding(.vertical, 4)
-            .padding(.horizontal, 8)
+            .padding(.horizontal, 4)
             .background(
                 RoundedRectangle(cornerRadius: 6)
                     .fill(value >= 0 ? Color.green1 : Color.red1)
