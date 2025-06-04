@@ -118,6 +118,8 @@ struct AlarmView: View {
             
             Spacer()
         }
+        .padding(.horizontal, 16)
+        .padding(.top, 16)
     }
 }
 

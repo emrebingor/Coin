@@ -40,6 +40,8 @@ struct AlSatView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(.top, 16)
         }
+        .padding(.horizontal, 16)
+        .padding(.top, 16)
     }
 
     func tabButton(title: String, tab: Tab) -> some View {

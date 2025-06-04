@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AlSatViewModel: ObservableObject {
+class AlSatViewModel: ObservableObject {	
     @Published var selectedTab: Tab = .kolayAl
     @Published var input: String = ""
     

@@ -40,6 +40,8 @@ struct PiyasaScreenView: View {
                         .environmentObject(viewModel)
                 }
             }
+            .padding(.horizontal, 16)
+            .padding(.top, 16)
         }
         .sheet(isPresented: $viewModel.isSheetVisible) {
             BottomSheetView(viewModel: viewModel)

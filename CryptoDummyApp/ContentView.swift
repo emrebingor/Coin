@@ -8,24 +8,50 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var isShowingSideMenu = false
+    
     var body: some View {
-        TabView {
-            PiyasaScreenView()
-                .tabItem {
-                    Label("Piyasa", systemImage: "bitcoinsign.circle")
+        ZStack {
+            NavigationStack {
+                TabView {
+                    PiyasaScreenView()
+                        .tabItem {
+                            Label("Piyasa", systemImage: "bitcoinsign.circle")
+                        }
+                    
+                    AlarmView()
+                        .tabItem {
+                            Label("Alarm", systemImage: "alarm.fill")
+                        }
+                    
+                    AlSatView()
+                        .tabItem {
+                            Label("Al-Sat", systemImage: "bitcoinsign.bank.building")
+                        }
+                    
+                    MapView()
+                        .tabItem {
+                            Label("Map", systemImage: "map.fill")
+                        }
+                    
                 }
-            AlarmView()
-                .tabItem {
-                    Label("Alarm", systemImage: "alarm.fill")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button(action: {
+                            withAnimation {
+                                isShowingSideMenu.toggle()
+                            }
+                        }) {
+                            Image(systemName: "menucard")
+                                .imageScale(.large)
+                        }
+                    }
                 }
+            }
             
-            AlSatView()
-                .tabItem {
-                    Label("Al-Sat", systemImage: "bitcoinsign.bank.building")
-                }
+            SideMenuView(isShowingSideNav: $isShowingSideMenu)
             
         }
-        .padding()
     }
 }
 
